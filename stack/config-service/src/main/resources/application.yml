@@ -1,0 +1,10 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@bitbucket.org:alexsrosa/configuracoes-microservices.git
+          search-paths:
+            - '{application}'

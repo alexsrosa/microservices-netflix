@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        estudanteCadastrado:
+          destination: queue.estudante.cadastrado
+          binder: rabbit
+          group: estudanteCadastradoConsumers
+          contentType: application/json
+      binders:
+        rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: ${RABBIT_HOST:localhost}
+                port: ${RABBIT_PORT:5672}
+                username: ${RABBIT_USERNAME:guest}
+                password: ${RABBIT_PASSWORD:guest}
+                virtual-host: ${RABBIT_VIRTUALHOST:/}
+    consul:
+      host: ${CONSUL_URL:localhost}
+      port: ${CONSUL_PORT:8500}
+      config:
+        enabled: true
+        prefix: config
+        defaultContext: apps
+        profileSeparator: '::'

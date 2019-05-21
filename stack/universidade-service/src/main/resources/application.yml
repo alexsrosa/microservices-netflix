@@ -1,0 +1,17 @@
+server:
+  port: ${PORT:8090}
+spring:
+  application:
+    name: universidade-service
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url:  ${MYSQL_URL:jdbc:mysql://localhost:3306/universidade}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:password}
